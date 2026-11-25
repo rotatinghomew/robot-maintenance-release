@@ -1,0 +1,301 @@
+{
+  "devices": [
+    {
+      "id": "D1",
+      "cell": "area-a",
+      "sections": [
+        "feed",
+        "core",
+        "out"
+      ]
+    },
+    {
+      "id": "D2",
+      "cell": "area-b",
+      "sections": [
+        "feed",
+        "core"
+      ]
+    }
+  ],
+  "operators": [
+    {
+      "id": "O1",
+      "holder": "shop",
+      "skills": [
+        "owner",
+        "sign"
+      ],
+      "device": "D1",
+      "sectors": [
+        "feed",
+        "core",
+        "out"
+      ],
+      "from_time": "07:00",
+      "until": "23:00"
+    },
+    {
+      "id": "O2",
+      "holder": "vendor-a",
+      "skills": [
+        "maintain"
+      ],
+      "device": "D1",
+      "sectors": [
+        "feed",
+        "core"
+      ],
+      "from_time": "09:00",
+      "until": "14:00"
+    },
+    {
+      "id": "O3",
+      "holder": "vendor-b",
+      "skills": [
+        "maintain"
+      ],
+      "device": "D1",
+      "sectors": [
+        "out"
+      ],
+      "from_time": "09:00",
+      "until": "12:00"
+    },
+    {
+      "id": "O4",
+      "holder": "shop",
+      "skills": [
+        "sign"
+      ],
+      "device": "D1",
+      "sectors": [
+        "feed"
+      ],
+      "from_time": "07:00",
+      "until": "23:00"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "J1",
+      "device": "D1",
+      "areas": [
+        "feed"
+      ],
+      "start": "09:00",
+      "end": "13:00",
+      "holder": "O2",
+      "replaces": null
+    },
+    {
+      "id": "J2",
+      "device": "D1",
+      "areas": [
+        "core",
+        "out"
+      ],
+      "start": "12:00",
+      "end": "16:00",
+      "holder": "O2",
+      "replaces": null
+    },
+    {
+      "id": "J3",
+      "device": "D1",
+      "areas": [
+        "core"
+      ],
+      "start": "11:00",
+      "end": "13:00",
+      "holder": "O2",
+      "replaces": "J1"
+    }
+  ],
+  "production": [
+    {
+      "id": "P1",
+      "device": "D1",
+      "required_area": [
+        "feed",
+        "core"
+      ],
+      "route": "standard",
+      "start": "08:30",
+      "actual_start": "08:33",
+      "alternative": "D2"
+    },
+    {
+      "id": "P2",
+      "device": "D1",
+      "required_area": [
+        "feed",
+        "core"
+      ],
+      "route": "standard",
+      "start": "12:30",
+      "actual_start": null,
+      "alternative": "D2"
+    },
+    {
+      "id": "P3",
+      "device": "D1",
+      "required_area": [
+        "feed"
+      ],
+      "route": "flexible",
+      "start": "12:10",
+      "actual_start": null,
+      "alternative": null
+    },
+    {
+      "id": "P4",
+      "device": "D1",
+      "required_area": [
+        "out"
+      ],
+      "route": "standard",
+      "start": "14:00",
+      "actual_start": null,
+      "alternative": null
+    }
+  ],
+  "returns": [
+    {
+      "id": "R1",
+      "job": "J1",
+      "sign_by": "O4",
+      "at": "11:10",
+      "scopes": [
+        "feed"
+      ],
+      "request_key": "x1"
+    },
+    {
+      "id": "R2",
+      "job": "J3",
+      "sign_by": "O1",
+      "at": "12:05",
+      "scopes": [
+        "core"
+      ],
+      "request_key": "x3"
+    },
+    {
+      "id": "R3",
+      "job": "J2",
+      "sign_by": "O1",
+      "at": "14:10",
+      "scopes": [
+        "core",
+        "out"
+      ],
+      "request_key": "x2"
+    }
+  ],
+  "controls": [
+    {
+      "id": "X1",
+      "device": "D1",
+      "job": "J1",
+      "revision": 5,
+      "owner": "shop",
+      "mode": "verify",
+      "scopes": [
+        "feed"
+      ],
+      "applied_at": "11:12",
+      "arrived_at": "11:13",
+      "request_key": "x1"
+    },
+    {
+      "id": "X3",
+      "device": "D1",
+      "job": "J3",
+      "revision": 7,
+      "owner": "shop",
+      "mode": "production",
+      "scopes": [
+        "feed",
+        "core"
+      ],
+      "applied_at": "12:06",
+      "arrived_at": "12:06",
+      "request_key": "x3"
+    },
+    {
+      "id": "X2",
+      "device": "D1",
+      "job": "J1",
+      "revision": 6,
+      "owner": "shop",
+      "mode": "production",
+      "scopes": [
+        "feed"
+      ],
+      "applied_at": "11:25",
+      "arrived_at": "12:15",
+      "request_key": "x1"
+    },
+    {
+      "id": "X4",
+      "device": "D1",
+      "job": "J2",
+      "revision": 8,
+      "owner": "vendor-a",
+      "mode": "maintain",
+      "scopes": [
+        "core",
+        "out"
+      ],
+      "applied_at": "12:20",
+      "arrived_at": "12:22",
+      "request_key": "x2"
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "U1",
+      "device": "D2",
+      "route": "standard",
+      "sections": [
+        "feed",
+        "core"
+      ]
+    }
+  ],
+  "dispatches": [
+    {
+      "id": "Y1",
+      "request_key": "x1",
+      "job": "J1",
+      "submitted": "11:10",
+      "response": "timeout",
+      "status_seen": "11:11"
+    },
+    {
+      "id": "Y2",
+      "request_key": "x1",
+      "job": "J1",
+      "submitted": "11:16",
+      "response": "unknown",
+      "status_seen": "11:16"
+    },
+    {
+      "id": "Y3",
+      "request_key": "x2",
+      "job": "J2",
+      "submitted": "14:10",
+      "response": "timeout",
+      "status_seen": "14:11"
+    },
+    {
+      "id": "Y4",
+      "request_key": "x3",
+      "job": "J3",
+      "submitted": "12:05",
+      "response": "accepted",
+      "status_seen": "12:05"
+    }
+  ]
+}
